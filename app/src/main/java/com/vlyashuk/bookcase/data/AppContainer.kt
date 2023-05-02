@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 interface AppContainer {
-    val bookRepository: BooksRepository
+    val booksRepository: BooksRepository
 }
 
 class DefaultAppContainer : AppContainer {
@@ -20,7 +20,7 @@ class DefaultAppContainer : AppContainer {
         retrofit.create(BookService::class.java)
     }
 
-    override val bookRepository: BooksRepository by lazy {
+    override val booksRepository: BooksRepository by lazy {
         NetworkBooksRepository(retrofitService)
     }
 }

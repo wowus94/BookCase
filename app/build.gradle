@@ -48,6 +48,8 @@ android {
 
 dependencies {
 
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+
     //Coil
     implementation "io.coil-kt:coil-compose:2.2.2"
 

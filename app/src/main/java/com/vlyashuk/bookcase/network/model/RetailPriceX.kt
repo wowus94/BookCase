@@ -1,6 +1,6 @@
 package com.vlyashuk.bookcase.network.model
 
 data class RetailPriceX(
-    val amount: Int,
+    val amount: Double,
     val currencyCode: String
 )
