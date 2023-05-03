@@ -1,8 +1,8 @@
 package com.vlyashuk.bookcase.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
@@ -27,24 +27,28 @@ import com.vlyashuk.bookcase.data.Book
 
 @Composable
 fun BooksGridScreen(
-    books: List<Book>, modifier: Modifier
+    books: List<Book>, modifier: Modifier,
+    onBookClicked: (Book) -> Unit
 ) {
     LazyVerticalGrid(columns = GridCells.Adaptive(150.dp), contentPadding = PaddingValues(4.dp)) {
         itemsIndexed(books) { _, book ->
-            BooksCard(book = book)
+            BooksCard(book = book, modifier, onBookClicked)
         }
     }
 }
 
 @Composable
 fun BooksCard(
-    book: Book, modifier: Modifier = Modifier
+    book: Book,
+    modifier: Modifier,
+    onBookClicked: (Book) -> Unit
 ) {
     Card(
         modifier = modifier
             .padding(4.dp)
             .fillMaxWidth()
             .requiredHeight(296.dp)
+            .clickable { onBookClicked(book) }
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
